@@ -11,7 +11,10 @@
                 <small>Slug: {{this.slug}}</small><br>
                 <small>Data: {{this.date}}</small><br>
                 <a class="btn btn-primary mt-4" href="/admin/categorias/edit/{{_id}}">Editar categoria</a>
-                <a style="float:right" class="btn btn-danger mt-4" href="/admin/categorias/delete/{{_id}}">Apagar categoria</a>
+                <form action="/admin/categorias/delete" method="POST">
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <button type="submit" style="float:right" class="btn btn-danger">Apagar categoria</button>
+                </form>
             </div>
         </div>
     </div>

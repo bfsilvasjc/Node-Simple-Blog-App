@@ -71,6 +71,17 @@ router.get('/categorias/edit/:id', (req, res)=>{
     })
 })
 
+router.post('/categorias/delete', (req, res)=>{
+    Categoria.remove({_id:req.body.id}).then(()=>{
+        req.flash('success_msg', 'Categoria excluída com sucesso!')
+        res.redirect('/admin/categorias')
+    }).catch((err)=>{
+        console.log('Houve um erro: ' + err)
+        req.flash('error_msg', 'Houve um erro interno ao excluir categoria!')
+        res.redirect('/admin/categorias')
+    })
+})
+
 router.post('/categorias/edit', (req, res)=>{
     Categoria.findOne({_id: req.body.id}).then((categoria)=>{
         categoria.nome = req.body.nome
