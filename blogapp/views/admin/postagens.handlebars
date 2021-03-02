@@ -1,0 +1,27 @@
+{{#each erros}}
+<div class="alert alert-danger">{{texto}}</div>
+{{/each}}
+<h2>Lista de postagens</h2>
+<hr>
+<a href="/admin/postagens/add" class="btn btn-success">Nova postagem</a>
+{{#each postagens}}
+    <div class="col-md-6">
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4>{{titulo}}</h4>
+                <small>Slug: {{slug}}</small><br>
+                <small>Descrição: {{descricao}}</small><br>
+                <small>Conteúdo: {{conteudo}}</small><br>
+                <small>Data: {{data}}</small><br>
+                <small>Categoria: {{categoria.nome}}</small><br>
+                <a class="btn btn-primary mt-4" href="/admin/postagens/edit/{{_id}}">Editar postagem</a>
+                <form action="/admin/postagens/delete" method="POST">
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <button type="submit" style="float:right" class="btn btn-danger">Apagar postagem</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{{else}}
+<h4 class="mt-4">Nenhuma postagem registrada</h4>
+{{/each}}
