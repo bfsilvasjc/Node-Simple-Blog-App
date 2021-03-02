@@ -205,4 +205,15 @@ router.post('/postagens/edit/', (req, res)=>{
     })
 })
 
+router.post('/postagens/delete', (req, res)=>[
+    Postagem.remove({_id:req.body.id}).then(()=>{
+        req.flash('success_msg', 'Postagem excluída com sucesso!')
+        res.redirect('/admin/postagens')
+    }).catch((err)=>{
+        console.log('Erro ao excluir postagem: ' + err)
+        req.flash('error_msg', 'Houve um erro ao apagar a postagem')
+        res.redirect('/admin/postagens')
+    })
+])
+
 module.exports = router;
