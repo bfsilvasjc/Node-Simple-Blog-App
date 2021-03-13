@@ -1,0 +1,25 @@
+<div class="jumbotron" style="padding: 2rem 1rem; margin-bottom: 2rem; background-color: #e9ecef; border-radius: .3rem;">
+    <h1 class="display-4">Bem-vindo ao blog do projeto NodeJS!</h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Crie uma conta</a>
+    </p>
+</div>
+<hr>
+<h2>Postagens recentes</h2>
+{{#each postagens}}
+    <div class="card mt-4">
+        <div class="card-body">
+            <h3>{{titulo}}</h3>
+            <p>{{descricao}}</p>
+            <a href="postagem/{{slug}}" class="btn btn-success">Leia mais...</a>
+            <hr>
+            <small>Categoria: {{categoria.nome}}</small><br>
+            <small>Data de publicação: {{data}}</small>
+        </div>
+    </div>
+{{else}}
+    <h5>Nenhuma postagem encontrada!</h5>
+{{/each}}
