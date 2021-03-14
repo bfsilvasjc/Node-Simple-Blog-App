@@ -15,6 +15,7 @@ require('./models/Categoria')
 const Categoria = mongoose.model('categorias')
 const passport = require('passport')
 require('./config/auth')(passport)
+const { eAdmin } = require('./helpers/eAdmin')
 
 // Configurações
 
@@ -35,6 +36,7 @@ app.use((req, res, next)=>{
     res.locals.success_msg = req.flash('success_msg')
     res.locals.error_msg = req.flash('error_msg')
     res.locals.error = req.flash('error')
+    res.locals.user = req.user || null
     next()
 })
 
@@ -116,7 +118,7 @@ app.get('/categorias/:slug', (req, res)=>{
     })
 })
 
-app.use('/admin', admin)
+app.use('/admin', eAdmin, admin)
 app.use('/usuarios', usuarios)
 
 // Outros
