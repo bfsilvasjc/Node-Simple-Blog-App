@@ -30,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/bfsilvasjc/Node-Simple-Blog-App/issues"
   },
+  "engines": {
+    "node": "14.16.0"
+  },
   "homepage": "https://github.com/bfsilvasjc/Node-Simple-Blog-App#readme"
 }
