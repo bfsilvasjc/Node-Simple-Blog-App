@@ -4,6 +4,7 @@ const handlebars = require('express-handlebars')
 const bodyparser = require('body-parser')
 const app = express()
 const admin = require('./routes/admin')
+const usuarios = require('./routes/usuario')
 const path = require('path')
 const mongoose = require('mongoose')
 const session = require('express-session')
@@ -12,6 +13,8 @@ require('./models/Postagem')
 const Postagem = mongoose.model('postagens')
 require('./models/Categoria')
 const Categoria = mongoose.model('categorias')
+const passport = require('passport')
+require('./config/auth')(passport)
 
 // Configurações
 
@@ -22,12 +25,16 @@ app.use(session({
     saveUninitialized: true
 }))
 
+app.use(passport.initialize())
+app.use(passport.session())
+
 app.use(flash())
 
 // MIDDLEWARE
 app.use((req, res, next)=>{
     res.locals.success_msg = req.flash('success_msg')
     res.locals.error_msg = req.flash('error_msg')
+    res.locals.error = req.flash('error')
     next()
 })
 
@@ -110,6 +117,7 @@ app.get('/categorias/:slug', (req, res)=>{
 })
 
 app.use('/admin', admin)
+app.use('/usuarios', usuarios)
 
 // Outros
 const port = 8081
