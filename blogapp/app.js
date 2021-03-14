@@ -16,7 +16,6 @@ const Categoria = mongoose.model('categorias')
 const passport = require('passport')
 require('./config/auth')(passport)
 const { eAdmin } = require('./helpers/eAdmin')
-const db = require('./config/db')
 
 // Configurações
 
@@ -51,7 +50,8 @@ app.set('view engine', 'handlebars')
 
 // MONGOOSE
 mongoose.Promise = global.Promise
-mongoose.connect(db.mongoURI).then(()=>{
+var mongoURI = process.end.MONGO_CONECCT || 'mongodb://localhost/blogapp'
+mongoose.connect(mongoURI).then(()=>{
     console.log('Conectado com sucesso!')
 }).catch((err)=>{
     console.log('Erro ao conectar: ' + err)
