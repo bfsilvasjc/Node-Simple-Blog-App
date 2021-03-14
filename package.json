@@ -2,7 +2,7 @@
   "name": "bloapp",
   "version": "1.0.0",
   "description": "Aplicativo para simular um blog simples com node e mongodb",
-  "main": "app.js",
+  "main": "blogapp/app.js",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -19,7 +19,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node blogapp/app.js"
   },
   "repository": {
     "type": "git",
