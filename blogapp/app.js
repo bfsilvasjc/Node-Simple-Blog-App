@@ -50,7 +50,7 @@ app.set('view engine', 'handlebars')
 
 // MONGOOSE
 mongoose.Promise = global.Promise
-var mongoURI = process.end.MONGO_CONECCT || 'mongodb://localhost/blogapp'
+var mongoURI = process.env.MONGO_CONECCT || 'mongodb://localhost/blogapp'
 mongoose.connect(mongoURI).then(()=>{
     console.log('Conectado com sucesso!')
 }).catch((err)=>{
