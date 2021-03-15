@@ -62,7 +62,8 @@ app.use((req, res, next)=>{
 // Rotas
 app.get('/', (req, res)=>{
     Postagem.find().lean().populate('categoria').sort({data:'desc'}).then((postagens)=>{
-        res.render('index', {postagens})
+        //res.render('index', {postagens})
+        res.send('Testando')
     }).catch((err)=>{
         req.flash('error_msg', 'Houve um erro ao listar as categorias')
         res.redirect('/404')
