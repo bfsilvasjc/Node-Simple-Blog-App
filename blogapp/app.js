@@ -40,10 +40,6 @@ app.use((req, res, next)=>{
     next()
 })
 
-// BODY-PARSER
-app.use(bodyparser.urlencoded({extended: true}))
-app.use(bodyparser.json())
-
 // HANDLEBARS
 app.engine('handlebars', handlebars({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
