@@ -42,6 +42,7 @@ app.use((req, res, next)=>{
 
 // HANDLEBARS
 app.engine('handlebars', handlebars({defaultLayout: 'main'}))
+app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'handlebars')
 
 // MONGOOSE
@@ -62,8 +63,7 @@ app.use((req, res, next)=>{
 // Rotas
 app.get('/', (req, res)=>{
     Postagem.find().lean().populate('categoria').sort({data:'desc'}).then((postagens)=>{
-        //res.render('index', {postagens})
-        res.send('Testando')
+        res.render('index', {postagens})
     }).catch((err)=>{
         req.flash('error_msg', 'Houve um erro ao listar as categorias')
         res.redirect('/404')
