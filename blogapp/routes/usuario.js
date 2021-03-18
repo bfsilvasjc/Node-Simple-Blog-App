@@ -13,6 +13,8 @@ router.get('/registro', (req, res)=>{
 router.post('/registro', (req, res)=>{
     var erros = []
 
+    console.log(req);
+
     if(!req.body.nome || typeof req.body.nome == undefined || req.body.nome == null){
         erros.push({texto: 'Nome inválido!'})
     }
